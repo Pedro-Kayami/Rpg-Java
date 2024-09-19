@@ -1,10 +1,9 @@
 package game.functions;
 
 public class functions {
+	int saude;
 	
-	void saudePersonagem() {
-		
+	public int puxarSaude() {
+		return saude;
 	}
-	
-	
 }
