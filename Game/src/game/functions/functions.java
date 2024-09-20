@@ -84,4 +84,18 @@ public class functions {
 	        }
 	    }
 	}
+	
+	public void jogarItem(String item) {
+
+	    for (int i = 0; i < inventario.length; i++) {
+	        if (item.equals(inventario[i])) { 
+	            inventario[i] = null; 
+	            System.out.println("Item {" + item + "} removido do inventário.");
+	            return;
+	        }
+	    }
+
+	    System.out.println("Item {" + item + "} não encontrado no inventário.");
+	}
+
 }
