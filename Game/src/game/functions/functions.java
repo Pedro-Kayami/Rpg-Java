@@ -44,7 +44,6 @@ public class functions {
 	}
 	
 	// SISTEMA DE ARMAS
-	
 	public void equiparArma(String arma) {
         boolean armaEncontrada = false;
 
@@ -71,5 +70,18 @@ public class functions {
 		}
 	}
 	
+	// SISTEMA DE INVENTARIO
+	public String[] verInventario() {
+		return inventario;
+	}
 	
+	public void pegarItem(String item) {
+		for (int i = 0; i < inventario.length; i++) {
+	        if (inventario[i] == null) { 
+	            inventario[i] = item; 
+	            System.out.println("Item {" + item + "} adicionado ao inventário.");
+	            return;
+	        }
+	    }
+	}
 }
