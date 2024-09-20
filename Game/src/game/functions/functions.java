@@ -14,4 +14,8 @@ public class functions {
 	public void reduzirSaude(int dano) {
 		setarSaude(saude - dano);
 	}
+	
+	public void adicionarSaude(int adcSaude) {
+		setarSaude(saude + adcSaude);
+	}
 }
