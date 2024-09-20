@@ -3,6 +3,8 @@ package game.functions;
 public class functions {
 	int saude = 100;
 	int forca = 1;
+	String armas;
+	String[] inventario;
 	
 	
 	// SISTEMA DE SAUDE
@@ -39,6 +41,34 @@ public class functions {
 	
 	public void resetarForca() {
 		forca = 1;
+	}
+	
+	// SISTEMA DE ARMAS
+	
+	public void equiparArma(String arma) {
+        boolean armaEncontrada = false;
+
+        for (String item : inventario) {
+            if (item != null && item.equals(arma)) {
+                armaEncontrada = true;
+                break;
+            }
+        }
+
+        if (armaEncontrada) {
+            armas = arma;
+            System.out.println("{" + armas + "} Equipada com sucesso!");
+        } else {
+            System.out.println("Arma não encontrada no inventário!");
+        }
+    }
+	
+	public void desequiparArma(String arma) {
+		if (armas != null) {
+			armas = null;
+		} else {
+			System.out.println("Você não tem nenhuma arma equipada.");
+		}
 	}
 	
 	
