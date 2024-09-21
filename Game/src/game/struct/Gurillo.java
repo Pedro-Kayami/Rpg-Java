@@ -1,14 +1,15 @@
 package game.struct;
-import game.functions.functions;
+import game.functions.Functions;
+import game.functions.Gui;
 
 
 public class Gurillo{
 	
 	public void carregarJogador() {
-		functions functions = new functions(10);
+		Gui gui= new Gui();
 		
-		// Item inicial do jogador
-		functions.pegarItem("Oculos");
+		gui.start();
+		
 	}
 	
 }

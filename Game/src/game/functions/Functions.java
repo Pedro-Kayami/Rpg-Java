@@ -1,15 +1,51 @@
 package game.functions;
 
-public class functions {
+import java.util.List;
+
+public class Functions {
     int saude = 100;
     int forca = 1;
     String armas;
     String[] inventario;
+    private Mapa mapa;
 
-
-    public functions(int tamanhoInventario) {
+    public Functions(int tamanhoInventario) {
         inventario = new String[tamanhoInventario];
+        mapa = new Mapa(); // Inicializa o sistema de mapa
     }
+
+    // Método para pegar itens próximos
+    public void pegarItemProximo() {
+        String localAtual = mapa.getLocalAtual();
+        System.out.println("Você está no local: " + localAtual);
+        
+        List<String> itensNoLocal = mapa.getItensNoLocal();
+
+        if (itensNoLocal.isEmpty()) {
+            System.out.println("Não há itens próximos para pegar.");
+            return;
+        }
+
+        System.out.println("Itens próximos: " + itensNoLocal);
+        String itemParaPegar = itensNoLocal.get(0); // Pega o primeiro item da lista
+
+        for (int i = 0; i < inventario.length; i++) {
+            if (inventario[i] == null) {
+                inventario[i] = itemParaPegar;
+                mapa.removerItemDoLocal(itemParaPegar);
+                System.out.println("Item {" + itemParaPegar + "} adicionado ao inventário.");
+                return;
+            }
+        }
+        System.out.println("Inventário cheio! Não foi possível pegar o item.");
+    }
+
+    // Sistema de movimentação do jogador
+    public void moverPara(String local) {
+        mapa.moverPara(local);
+    }
+
+
     
     // SISTEMA DE SAÚDE
     public int puxarSaude() {
@@ -76,7 +112,7 @@ public class functions {
 
     // SISTEMA DE INVENTÁRIO
     public String[] verInventario() {
-        return inventario;
+    	return inventario;
     }
     
     public void pegarItem(String item) {
