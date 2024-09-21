@@ -33,6 +33,12 @@ public class Gui {
                 case "pegar":
                     functions.pegarItemProximo(); // Pega itens próximos
                     break;
+                    
+                case "jogar":
+                    appendOutput("Qual item deseja jogar ?");
+                    String item = getInput();
+                    functions.jogarItem(item);
+                    break;
 
                 case "mover":
                     appendOutput("Para onde deseja ir? (Floresta, Caverna)");
