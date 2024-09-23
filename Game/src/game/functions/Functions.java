@@ -136,4 +136,15 @@ public class Functions {
         }
         System.out.println("Item {" + item + "} não encontrado no inventário.");
     }
+    
+    public String ajuda() {
+    	StringBuilder ajuda = new StringBuilder();
+    	ajuda.append("olhar: Você olha ao redor de você\n");
+    	ajuda.append("inventario: Mostra seu inventario\n");
+    	ajuda.append("pegar: Você pega um item do mapa\n");
+    	ajuda.append("jogar: Você joga um item fora\n");
+    	ajuda.append("mover: Você se move de mapa\n");
+    	ajuda.append("sair: Você fecha o jogo\n");
+    	return ajuda.toString();
+    }
 }

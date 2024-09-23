@@ -15,6 +15,7 @@ public class Gui {
 
     public void start() {
         appendOutput("Bem-vindo ao jogo!");
+        appendOutput("Digite ajuda para ver os comandos básicos");
 
         while (true) {
             displayOutput();
@@ -49,6 +50,10 @@ public class Gui {
                 case "sair":
                     appendOutput("Você saiu do jogo.");
                     return;
+                 
+                case "ajuda":
+                	appendOutput(functions.ajuda());
+                	break;
 
                 default:
                     appendOutput("Comando inválido. Tente novamente.");
