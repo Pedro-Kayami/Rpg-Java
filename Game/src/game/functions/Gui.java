@@ -1,12 +1,15 @@
 package game.functions;
 
 import java.util.Scanner;
+import game.functions.*;
 
 public class Gui {
     Functions functions = new Functions(10); // Inventário com 10 espaços
 
     private Scanner scanner;
     private StringBuilder outputBuffer;
+    
+    Mapa mapa = new Mapa();
 
     public Gui() {
         scanner = new Scanner(System.in);
@@ -23,7 +26,7 @@ public class Gui {
 
             switch (input) {
                 case "olhar":
-                    appendOutput("Você está em uma floresta escura...");
+                    appendOutput("Você está em " + mapa.getLocalAtual());
                     break;
                 
                 case "inventario":
