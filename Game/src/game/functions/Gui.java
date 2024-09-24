@@ -27,7 +27,7 @@ public class Gui {
 
             switch (input) {
                 case "olhar":
-                    appendOutput("Você está em " + mapa.getLocalAtual());
+                    System.out.println(mapa.olharMapAtual());
                     break;
                 
                 case "inventario":
