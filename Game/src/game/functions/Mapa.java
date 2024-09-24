@@ -12,17 +12,18 @@ public class Mapa {
         locais = new HashMap<>();
 
         // Definindo alguns locais e itens associados
-        List<String> florestaItens = new ArrayList<>();
-        florestaItens.add("Espada");
-        florestaItens.add("Escudo");
+        List<String> principadoModelagem = new ArrayList<>();
+        principadoModelagem.add("Linha");
+        principadoModelagem.add("Entidade");
 
-        List<String> cavernaItens = new ArrayList<>();
-        cavernaItens.add("Poção");
+        List<String> capitalRobotica = new ArrayList<>();
+        capitalRobotica.add("Led");
+        capitalRobotica.add("Pilha");
 
-        locais.put("Floresta", florestaItens);
-        locais.put("Caverna", cavernaItens);
+        locais.put("Principado da Modelagem", principadoModelagem);
+        locais.put("Capital da Robótica", capitalRobotica);
 
-        localAtual = "Floresta"; // Local inicial do jogador
+        localAtual = "Principado da Modelagem"; // Local inicial do jogador
     }
 
     public String getLocalAtual() {

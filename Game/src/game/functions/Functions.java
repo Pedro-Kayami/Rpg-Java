@@ -140,6 +140,7 @@ public class Functions {
     public String ajuda() {
     	StringBuilder ajuda = new StringBuilder();
     	ajuda.append("olhar: Você olha ao redor de você\n");
+    	ajuda.append("status: Mostra o seu status\n");
     	ajuda.append("inventario: Mostra seu inventario\n");
     	ajuda.append("pegar: Você pega um item do mapa\n");
     	ajuda.append("jogar: Você joga um item fora\n");
