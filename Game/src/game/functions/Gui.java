@@ -1,7 +1,6 @@
 package game.functions;
 
 import java.util.Scanner;
-import game.functions.*;
 
 public class Gui {
     Functions functions = new Functions(10); // Inventário com 10 espaços
@@ -17,11 +16,13 @@ public class Gui {
     }
 
     public void start() {
-        appendOutput("Bem-vindo ao jogo!");
-        appendOutput("Digite ajuda para ver os comandos básicos");
+        appendOutput("┌─────────────────────────────────────┐");
+        appendOutput("│      As Aventuras do Gurilo         │");
+        appendOutput("│ Digite 'ajuda' para ver os comandos │");
+        appendOutput("└─────────────────────────────────────┘");
 
         while (true) {
-            displayOutput();
+            displayOutput(); // Mostra o conteúdo de saída (se houver)
 
             String input = getInput().toLowerCase();
 
@@ -29,34 +30,41 @@ public class Gui {
                 case "olhar":
                     System.out.println(mapa.olharMapAtual());
                     break;
+                    
+                case "status":
+                    mostrarStatus(); // Mostra o status
+                    break;
                 
                 case "inventario":
-                    mostrarInventario();
+                    mostrarInventario(); // Mostra o inventário
                     break;
 
                 case "pegar":
                     functions.pegarItemProximo(); // Pega itens próximos
+                    appendOutput("Você pegou um item.");
                     break;
                     
                 case "jogar":
-                    appendOutput("Qual item deseja jogar ?");
+                    appendOutput("Qual item deseja jogar?");
                     String item = getInput();
                     functions.jogarItem(item);
+                    appendOutput("Você jogou o item: " + item);
                     break;
 
                 case "mover":
                     appendOutput("Para onde deseja ir? (Floresta, Caverna)");
                     String novoLocal = getInput();
                     functions.moverPara(novoLocal);
+                    appendOutput("Você se moveu para: " + novoLocal);
                     break;
 
                 case "sair":
                     appendOutput("Você saiu do jogo.");
                     return;
-                 
+
                 case "ajuda":
-                	appendOutput(functions.ajuda());
-                	break;
+                    appendOutput(functions.ajuda());
+                    break;
 
                 default:
                     appendOutput("Comando inválido. Tente novamente.");
@@ -66,24 +74,45 @@ public class Gui {
 
     private void mostrarInventario() {
         String[] inventario = functions.verInventario();
-        appendOutput("Seu inventário contém:");
+        appendOutput("┌──────────────────────────────┐");
+        appendOutput("│ Seu inventário contém:       │");
         boolean vazio = true;
 
         for (String item : inventario) {
             if (item != null) {
-                appendOutput("- " + item);
+                appendOutput("│ - " + item);
                 vazio = false;
             }
         }
 
         if (vazio) {
-            appendOutput("Inventário vazio.");
+            appendOutput("│ Inventário vazio.");
         }
+
+        appendOutput("└──────────────────────────────┘");
+    }
+
+    private void mostrarStatus() {
+        // Pega os dados de força, saúde e local do jogador nas funções
+        int forca = functions.puxarForca();    // Simula a variável força
+        int saude = functions.puxarSaude();    // Simula a variável saúde
+        String local = mapa.getLocalAtual(); // Simula a variável local atual
+
+        // Interface de status do jogador com ASCII
+        appendOutput("┌───────────────────────────────────────────┐");
+        appendOutput("│ Status do Jogador                         │");
+        appendOutput("├───────────────────────────────────────────┤");
+        appendOutput("│ Local: " + local + "                      │");
+        appendOutput("│ Força: " + forca + "                      │");
+        appendOutput("│ Saúde: " + saude + "                      │");
+        appendOutput("└───────────────────────────────────────────┘");
     }
 
     public void displayOutput() {
-        System.out.println(outputBuffer.toString());
-        outputBuffer.setLength(0); // Limpa o buffer após exibir
+        if (outputBuffer.length() > 0) {
+            System.out.println(outputBuffer.toString());
+            outputBuffer.setLength(0); // Limpa o buffer após exibir
+        }
     }
 
     public String getInput() {
