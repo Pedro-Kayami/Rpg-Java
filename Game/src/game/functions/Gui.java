@@ -3,7 +3,7 @@ package game.functions;
 import java.util.Scanner;
 
 public class Gui {
-    Functions functions = new Functions(10); // Inventário com 10 espaços
+    Functions functions = new Functions(); // Inventário com 10 espaços
 
     private Scanner scanner;
     private StringBuilder outputBuffer;
@@ -28,8 +28,9 @@ public class Gui {
 
             switch (input) {
                 case "olhar":
-                    System.out.println(mapa.olharMapAtual());
+                	System.out.println(mapa.olharMapAtual(functions));
                     break;
+                	
                     
                 case "status":
                     mostrarStatus(); // Mostra o status

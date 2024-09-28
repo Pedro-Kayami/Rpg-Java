@@ -3,13 +3,16 @@ package game.functions;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
+
+import game.combat.Combate;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Mapa {
     private HashMap<String, List<String>> locais; // Cada local tem uma lista de itens
     private String localAtual;
-    String[] localModelagem = {"Inimigo","Poção","Nada","Matéria"};
+    String[] localModelagem = {"Poção","Nada","Matéria","boss"};
 
     public Mapa() {
         locais = new HashMap<>();
@@ -46,31 +49,37 @@ public class Mapa {
         return locais.getOrDefault(localAtual, new ArrayList<>());
     }
     
-    public String olharMapAtual() {
-        // Verifica se o local atual é "Principado da Modelagem"
+    public String olharMapAtual(Functions personagem) {
         if (localAtual.equals("Principado da Modelagem")) {
+            Random random = new Random();
             if (localModelagem == null || localModelagem.length == 0) {
-                return "Não achou nada"; // Evita exceção e retorna uma mensagem
+                return "Não achou nada, continue procurando";
             }
 
-            // Sorteia um índice aleatório
-            Random random = new Random();
             int index = random.nextInt(localModelagem.length);
 
-            // Obtém o item sorteado
             String itemSorteado = localModelagem[index];
-
-            // Remove o item sorteado do array
             localModelagem = removerItem(localModelagem, index);
 
-            // Verifica se o item sorteado é vazio ou nulo
+            if (itemSorteado.equals("Matéria")) {
+                personagem.adicionarForca(1);
+                System.out.println(personagem.puxarForca());
+            } else if (itemSorteado.equals("boss")) {
+                System.out.println("Você encontrou o boss!");
+
+                // Iniciar combate
+                Combate combate = new Combate(personagem.puxarForca(), personagem.puxarSaude(), 10); // Exemplo: dano da espada = 10
+                combate.iniciarCombate();
+            }else if(itemSorteado.equals("Poção")) {
+            	personagem.adicionarSaude(20);
+            }
+
             if (itemSorteado == null || itemSorteado.isEmpty()) {
                 return "Você não acha nada";
             } else {
                 return itemSorteado;
             }
         }
-
         return "Você não acha nada";
     }
 

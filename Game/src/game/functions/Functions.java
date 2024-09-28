@@ -8,6 +8,11 @@ public class Functions {
     String armas;
     String[] inventario;
     private Mapa mapa;
+    
+    public Functions() {
+        inventario = this.inventario;
+        mapa = this.mapa; // Inicializa o sistema de mapa
+    }
 
     public Functions(int tamanhoInventario) {
         inventario = new String[tamanhoInventario];
@@ -50,7 +55,7 @@ public class Functions {
     // SISTEMA DE SAÚDE
     public int puxarSaude() {
         System.out.println(saude);
-        return saude;
+        return this.saude;
     }
     
     public void setarSaude(int saude) {
@@ -67,7 +72,7 @@ public class Functions {
 
     // SISTEMA DE FORÇA 
     public int puxarForca() {
-        return forca;
+        return this.forca;
     }
     
     public void adicionarForca(int adcForca) {
