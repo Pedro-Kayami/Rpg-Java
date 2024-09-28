@@ -107,7 +107,7 @@ public class Combate {
         System.out.println("┌───────────────────────────────────────────┐");
         System.out.println("│          Status do Combate                │");
         System.out.println("├───────────────────────────────────────────┤");
-        System.out.println("│ Jogador:                                  │");
+        System.out.println("│ Gurillo:                                  │");
         System.out.println("│ Saúde: " + saudeJogador + "                                 │");
         System.out.println("├───────────────────────────────────────────┤");
         System.out.println("│ Boss:                                     │");
